@@ -1,0 +1,51 @@
+<div class="form-container">
+    <mat-card class="form-card">
+  
+      <h2>{{ isEdit ? 'Editar contacto' : 'Nuevo contacto' }}</h2>
+  
+      <form [formGroup]="formContacto" (ngSubmit)="onSubmit()" autocomplete="off" class="formulario">
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" placeholder="Nombre completo">
+          <mat-error *ngIf="formContacto.get('name')?.hasError('required')">
+            El nombre es obligatorio
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="Correo electrónico">
+          <mat-error *ngIf="formContacto.get('email')?.hasError('required')">
+            El email es obligatorio
+          </mat-error>
+          <mat-error *ngIf="formContacto.get('email')?.hasError('email')">
+            El formato del email no es válido
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Teléfono</mat-label>
+          <input matInput formControlName="phone" placeholder="Número de teléfono">
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Notas</mat-label>
+          <textarea matInput formControlName="notes" placeholder="Notas adicionales"></textarea>
+        </mat-form-field>
+  
+        <div class="form-buttons">
+          <button mat-raised-button color="primary" type="submit">
+            {{ isEdit ? 'Actualizar' : 'Guardar' }}
+          </button>
+  
+          <button mat-stroked-button color="accent" type="button" (click)="cancelar()">
+            Cancelar
+          </button>
+        </div>
+  
+      </form>
+  
+    </mat-card>
+  </div>
+  

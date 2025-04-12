@@ -1,0 +1,39 @@
+.tabla-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    background: #f9f9f9;
+    min-height: 100vh;
+  }
+  
+  .tabla-card {
+    width: 100%;
+    max-width: 1000px;
+    padding: 2rem;
+  }
+  
+  .tabla-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .full-width-table {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .logout-button {
+    align-self: flex-end;
+    width: auto;
+    font-weight: 500;
+    padding: 4px 12px;
+  }
+  

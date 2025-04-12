@@ -1,0 +1,39 @@
+<div class="auth-container" [ngClass]="{'loginActivo': loginActivo}">
+    <mat-card class="auth-card">
+        <h1 class="auth-title">Iniciar Sesión</h1>
+        <form [formGroup]="loginForm" novalidate autocomplete="off" class="auth-form">
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Escribe tu Email" formControlName="email">
+                <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+                    El Email es requerido
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" placeholder="Escribe tu contraseña" formControlName="password">
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                    La contraseña es requerida
+                </mat-error>
+            </mat-form-field>
+
+        </form>
+
+        <div class="auth-buttons">
+            <button mat-raised-button color="primary" class="full-width" (click)="singIn()">
+              Ingresar
+            </button>
+          
+            <button mat-stroked-button color="accent" class="full-width" (click)="registrarse()">
+              Registrarse
+            </button>
+          
+            <button mat-stroked-button color="warn" class="full-width" (click)="logOut()" *ngIf="loginActivo">
+              Cerrar Sesión
+            </button>
+          </div>
+          
+    </mat-card>
+</div>

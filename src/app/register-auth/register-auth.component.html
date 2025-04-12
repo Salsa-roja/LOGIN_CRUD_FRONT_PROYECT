@@ -1,0 +1,56 @@
+<div class="auth-container">
+    <mat-card class="auth-card">
+        <h1 class="auth-title">Registrar usuario</h1>
+
+        <form [formGroup]="createForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off" class="auth-form">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Escribe tu nombre" formControlName="name">
+                <mat-error *ngIf="createForm.controls['name'].hasError('required')">
+                    El nombre es requerido
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Escribe tu email" formControlName="email">
+
+                <mat-error *ngIf="createForm.get('email')?.hasError('required')">
+                    El email es obligatorio
+                </mat-error>
+                <mat-error *ngIf="createForm.get('email')?.hasError('email')">
+                    El formato del email no es válido
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width" *ngIf="!id">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" placeholder="Contraseña" formControlName="password"
+                    (input)="passValid()" autocomplete="off">
+            </mat-form-field>
+            <small *ngIf="passLengthErr" class="mat-error">{{ passLengthErr }}</small>
+
+            <mat-form-field appearance="outline" class="full-width" *ngIf="!id">
+                <mat-label>Repite la Contraseña</mat-label>
+                <input matInput type="password" placeholder="Repite tu contraseña" formControlName="pass_repeat"
+                    (input)="passValid()" autocomplete="off">
+            </mat-form-field>
+            <div *ngIf="passErrors.length > 0">
+                <span class="mat-error">Contraseña no válida</span>
+                <ul>
+                    <li *ngFor="let e of passErrors" class="mat-error">{{ e }}</li>
+                </ul>
+            </div>
+
+            <div class="auth-buttons">
+                <button mat-raised-button color="primary" class="full-width" type="submit">
+                    Guardar
+                </button>
+
+                <button mat-stroked-button color="accent" class="full-width" type="button" (click)="crud()">
+                    Regresar
+                </button>
+            </div>
+        </form>
+    </mat-card>
+</div>
