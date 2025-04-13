@@ -36,52 +36,13 @@ export class RegisterAuthComponent implements OnInit {
 
   }
 
-  // public detalle() {
-  //   this.activatedRoute.params.subscribe((params: Params) => {
-  //     this.id = params['id'];
-  //   })
-  //   console.log(this.id)
-  //   if (this.id) {
-  //     this.accion = 'Actualizar';
-  //     this.loginActivo = true;
-
-  //     this.ContactoService.getDetalleUsuarioId(this.id).subscribe(
-  //       (response: any) => {
-  //         if (response) {
-  //           this.createForm.patchValue(
-  //             this.usuario = response
-  //           );
-  //         }
-  //       }
-  //     );
-  //   } else {
-  //     this.accion = 'Agregar';
-  //     this.loginActivo = false;
-
-  //   }
-  // }
 
   public crud() {
     this.router.navigate(['contactos']);
   }
 
   public onSubmit(): void {
-    
-    // if (this.id) {
-    //   if (this.createForm.valid) {
-    //     this.ContactoService.saveOrUpdate(this.createForm.value)
-    //       .subscribe({
-    //         next: ((result) => {
-
-    //           console.log(result.info.msg)
-    //           this.router.navigate(['contactos']);
-    //         }
-    //         )
-    //       });
-    //   } else {
-    //     console.log('error update')
-    //   }
-    // }
+ 
 
     if (this.createForm.invalid) {
       this.openSnackBar('Completa todos los campos obligatorios', 'Cerrar');
